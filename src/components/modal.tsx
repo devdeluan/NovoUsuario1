@@ -3,6 +3,14 @@ import './style.css'
 import { useState } from 'react';
 export default function Modal({isOpen, setModalFechado}) {
 
+        //state techs com as tecnologias definidas
+        const [tipoUsuario, setTipoUsuario] = useState<string[]>(
+            [
+                "Administrador",
+                "Comum"
+            ]
+        );
+
 
 if (isOpen) {
     return (
@@ -51,6 +59,30 @@ if (isOpen) {
                                 id="foto"
                                 // onChange={ verificarCampoUpload } // vai atualizar quando alterar valor do input
                                 required
+                            />
+                        </div>   
+                        <div className="cad_linha_select">
+                        <label htmlFor="foto">Tipo de usuario:</label>
+                                            <select
+                                                name=""
+                                                id="cad_select_skill"
+                                                // onChange={(e) => setSelect(e.target.value)}
+                                            >
+                                                <option selected disabled value="">Selecione</option>
+                                                {
+                                                    tipoUsuario.map((tipoUsuario: any, index: number) => {
+                                                        return <option key={index} value={tipoUsuario}>{tipoUsuario}</option>
+                                                    })
+                                                }
+                                            </select>
+                                                                                    
+                        </div>
+
+                        <div className="cad_box_input">
+                            {/* Passar primeiro como exemplo */}
+                            <input
+                            className='enviarCadastro'
+                                type="submit"
                             />
                         </div>   
                      </form>
